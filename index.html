@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encryption & Decryption | Blockchain Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌞 Light Mode</button>
+    <h1>🔐 Encryption & Decryption Demo</h1>
+
+    <textarea id="inputText" placeholder="Enter your message..."></textarea>
+
+    <div class="buttons">
+      <button onclick="encryptText()">Encrypt & Store</button>
+      <button onclick="decryptText()">Decrypt Last Entry</button>
+      <button onclick="copyOutput()">Copy Output</button>
+    </div>
+
+    <div id="outputArea">
+      <h3>Output:</h3>
+      <p id="outputText">Nothing yet...</p>
+    </div>
+
+    <div class="blockchain">
+      <h3>📦 Mock Blockchain</h3>
+      <ul id="blockchainList"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Load theme preference
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light-mode');
+      document.getElementById('themeToggle').textContent = '🌙 Dark Mode';
+    }
+
+    function toggleTheme() {
+      const body = document.body;
+      const toggleBtn = document.getElementById("themeToggle");
+      const isLight = body.classList.toggle("light-mode");
+      toggleBtn.textContent = isLight ? "🌙 Dark Mode" : "🌞 Light Mode";
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
+  </script>
+</body>
+</html>
